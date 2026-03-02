@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Mi Universo ❤️</title>
+  <style>
+    body {
+      margin: 0;
+      height: 100vh;
+      overflow: hidden;
+      background: radial-gradient(circle at center, #ff4500 0%, #8b0000 40%, #000 80%);
+      font-family: 'Segoe UI', Arial, sans-serif;
+      color: #fff;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .stars {
+      position: absolute;
+      inset: 0;
+      background: transparent;
+      pointer-events: none;
+    }
+
+    .star {
+      position: absolute;
+      background: white;
+      border-radius: 50%;
+      opacity: 0.8;
+      animation: twinkle 3s infinite alternate;
+    }
+
+    @keyframes twinkle {
+      0%, 100% { opacity: 0.4; }
+      50% { opacity: 1; }
+    }
+
+    .container {
+      position: relative;
+      width: 100vmin;
+      height: 100vmin;
+      animation: slow-rotate 180s linear infinite;
+    }
+
+    @keyframes slow-rotate {
+      from { transform: rotate(0deg); }
+      to   { transform: rotate(360deg); }
+    }
+
+    .center {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 18vmin;
+      height: 18vmin;
+      background: #000;
+      border-radius: 50%;
+      transform: translate(-50%, -50%);
+      box-shadow: 0 0 60px #000, inset 0 0 40px #111;
+      z-index: 5;
+    }
+
+    .word {
+      position: absolute;
+      font-size: clamp(0.9rem, 2.2vmin, 1.4rem);
+      font-weight: 500;
+      text-shadow: 0 0 10px rgba(255, 255, 200, 0.9);
+      white-space: nowrap;
+      pointer-events: none;
+      animation: float 12s ease-in-out infinite alternate;
+    }
+
+    /* Colores variados para las palabras */
+    .word:nth-child(odd)  { color: #ffeb3b; text-shadow: 0 0 12px #ffeb3b; }
+    .word:nth-child(even) { color: #ff69b4; text-shadow: 0 0 12px #ff69b4; }
+    .word.special         { color: #00ffff; text-shadow: 0 0 15px #00ffff; font-size: 1.6rem; }
+
+    @keyframes float {
+      0%   { transform: translate(0, 0) rotate(0deg); }
+      100% { transform: translate(0, -1.5vmin) rotate(3deg); }
+    }
+
+    /* Posiciones aproximadas como en tu imagen (puedes ajustar) */
+  </style>
+</head>
+<body>
+
+  <div class="stars"></div>
+
+  <div class="container">
+    <div class="center"></div>
+
+    <!-- Palabras – ajusta translate y rotate según quieras -->
+    <div class="word" style="transform: translate(180px, -120px) rotate(15deg);">Te amo</div>
+    <div class="word" style="transform: translate(-200px, 80px) rotate(-30deg);">Mi universo</div>
+    <div class="word" style="transform: translate(140px, 160px) rotate(45deg);">Mi calma</div>
+    <div class="word" style="transform: translate(-160px, -140px) rotate(-20deg);">Mi flor</div>
+    <div class="word" style="transform: translate(220px, 40px) rotate(10deg);">Eres todo</div>
+    <div class="word" style="transform: translate(-100px, 200px) rotate(60deg);">Mi cielo</div>
+    <div class="word" style="transform: translate(80px, -180px) rotate(-50deg);">Amor eterno</div>
+    <div class="word" style="transform: translate(0, -220px) rotate(0deg);" class="special">Mi estrella</div>
+    <div class="word" style="transform: translate(-240px, 0) rotate(90deg);">Pasión</div>
+    <div class="word" style="transform: translate(0, 220px) rotate(180deg);">Mi destino</div>
+    <div class="word" style="transform: translate(160px, -80px) rotate(25deg);">Dulzura</div>
+    <div class="word" style="transform: translate(-80px, -160px) rotate(-40deg);">Esperanza</div>
+    <div class="word" style="transform: translate(200px, 120px) rotate(35deg);">Mi luz</div>
+    <div class="word" style="transform: translate(-140px, 140px) rotate(-15deg);">Siempre juntos</div>
+    <div class="word" style="transform: translate(100px, 180px) rotate(50deg);">Amanecer</div>
+    <div class="word" style="transform: translate(-180px, -100px) rotate(-25deg);">Mi razón</div>
+    <div class="word" style="transform: translate(240px, -60px) rotate(5deg);">Magia</div>
+    <div class="word" style="transform: translate(-220px, 60px) rotate(70deg);">Abrazos</div>
+    <!-- Agrega más palabras aquí... ¡cuantas quieras! -->
+
+  </div>
+
+  <script>
+    // Generar estrellas de fondo
+    const starsContainer = document.querySelector('.stars');
+    for (let i = 0; i < 200; i++) {
+      const star = document.createElement('div');
+      star.className = 'star';
+      const size = Math.random() * 3 + 1;
+      star.style.width = star.style.height = size + 'px';
+      star.style.left = Math.random() * 100 + 'vw';
+      star.style.top = Math.random() * 100 + 'vh';
+      star.style.animationDelay = Math.random() * 3 + 's';
+      starsContainer.appendChild(star);
+    }
+  </script>
+
+</body>
+</html>
