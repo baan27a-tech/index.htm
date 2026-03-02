@@ -3,130 +3,143 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Mi Universo ❤️</title>
+  <title>Mi Universo de Amor ❤️</title>
   <style>
     body {
       margin: 0;
       height: 100vh;
       overflow: hidden;
-      background: radial-gradient(circle at center, #ff4500 0%, #8b0000 40%, #000 80%);
-      font-family: 'Segoe UI', Arial, sans-serif;
+      background: radial-gradient(circle at center, #ff4500 0%, #8b0000 30%, #1a0000 60%, #000 90%);
+      font-family: 'Segoe UI', system-ui, sans-serif;
       color: #fff;
-      display: flex;
-      justify-content: center;
-      align-items: center;
     }
 
     .stars {
       position: absolute;
       inset: 0;
-      background: transparent;
       pointer-events: none;
     }
 
     .star {
       position: absolute;
-      background: white;
+      background: #fff;
       border-radius: 50%;
-      opacity: 0.8;
-      animation: twinkle 3s infinite alternate;
+      opacity: 0.7;
+      box-shadow: 0 0 8px #fff;
+      animation: twinkle 4s infinite alternate;
     }
 
     @keyframes twinkle {
-      0%, 100% { opacity: 0.4; }
-      50% { opacity: 1; }
+      0%, 100% { opacity: 0.3; transform: scale(0.8); }
+      50%      { opacity: 1;   transform: scale(1.2); }
     }
 
-    .container {
-      position: relative;
-      width: 100vmin;
-      height: 100vmin;
-      animation: slow-rotate 180s linear infinite;
+    .universe {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
     }
 
-    @keyframes slow-rotate {
+    .blackhole {
+      width: 20vmin;
+      height: 20vmin;
+      background: #000;
+      border-radius: 50%;
+      box-shadow: 
+        0 0 80px #000,
+        inset 0 0 60px #111,
+        0 0 200px rgba(139, 0, 0, 0.6);
+      z-index: 5;
+    }
+
+    .words {
+      position: absolute;
+      width: 90vmin;
+      height: 90vmin;
+      animation: orbit-slow 240s linear infinite;
+    }
+
+    @keyframes orbit-slow {
       from { transform: rotate(0deg); }
       to   { transform: rotate(360deg); }
     }
 
-    .center {
+    .word {
       position: absolute;
       top: 50%;
       left: 50%;
-      width: 18vmin;
-      height: 18vmin;
-      background: #000;
-      border-radius: 50%;
-      transform: translate(-50%, -50%);
-      box-shadow: 0 0 60px #000, inset 0 0 40px #111;
-      z-index: 5;
-    }
-
-    .word {
-      position: absolute;
-      font-size: clamp(0.9rem, 2.2vmin, 1.4rem);
-      font-weight: 500;
-      text-shadow: 0 0 10px rgba(255, 255, 200, 0.9);
+      font-size: clamp(1rem, 3vmin, 1.8rem);
+      font-weight: 600;
       white-space: nowrap;
+      transform-origin: center;
+      text-shadow: 0 0 15px currentColor;
+      animation: float 8s ease-in-out infinite alternate;
       pointer-events: none;
-      animation: float 12s ease-in-out infinite alternate;
     }
 
-    /* Colores variados para las palabras */
-    .word:nth-child(odd)  { color: #ffeb3b; text-shadow: 0 0 12px #ffeb3b; }
-    .word:nth-child(even) { color: #ff69b4; text-shadow: 0 0 12px #ff69b4; }
-    .word.special         { color: #00ffff; text-shadow: 0 0 15px #00ffff; font-size: 1.6rem; }
+    .word:nth-child(odd)  { color: #ffeb3b; animation-duration: 10s; }
+    .word:nth-child(even) { color: #ff69b4; animation-duration: 12s; }
+    .word.glow            { color: #00ffff; text-shadow: 0 0 25px #00ffff; font-size: clamp(1.4rem, 4vmin, 2.2rem); }
 
     @keyframes float {
       0%   { transform: translate(0, 0) rotate(0deg); }
-      100% { transform: translate(0, -1.5vmin) rotate(3deg); }
+      100% { transform: translate(0, -3vmin) rotate(4deg); }
     }
 
-    /* Posiciones aproximadas como en tu imagen (puedes ajustar) */
+    /* Distribuye en "órbitas" circulares con diferentes radios y ángulos */
+    .word-1  { transform: translate(-50%, -50%) translate(30vmin, 0) rotate(0deg); }
+    .word-2  { transform: translate(-50%, -50%) translate(0, -35vmin) rotate(45deg); }
+    .word-3  { transform: translate(-50%, -50%) translate(-28vmin, 0) rotate(90deg); }
+    .word-4  { transform: translate(-50%, -50%) translate(0, 32vmin) rotate(135deg); }
+    .word-5  { transform: translate(-50%, -50%) translate(25vmin, 18vmin) rotate(30deg); }
+    .word-6  { transform: translate(-50%, -50%) translate(-20vmin, -25vmin) rotate(-60deg); }
+    .word-7  { transform: translate(-50%, -50%) translate(15vmin, -30vmin) rotate(150deg); }
+    .word-8  { transform: translate(-50%, -50%) translate(-32vmin, 15vmin) rotate(-120deg); }
+    /* Agrega más según necesites, cambiando el radio (ej: 20vmin, 35vmin, 40vmin) y ángulo */
   </style>
 </head>
 <body>
 
   <div class="stars"></div>
 
-  <div class="container">
-    <div class="center"></div>
+  <div class="universe">
+    <div class="blackhole"></div>
 
-    <!-- Palabras – ajusta translate y rotate según quieras -->
-    <div class="word" style="transform: translate(180px, -120px) rotate(15deg);">Te amo</div>
-    <div class="word" style="transform: translate(-200px, 80px) rotate(-30deg);">Mi universo</div>
-    <div class="word" style="transform: translate(140px, 160px) rotate(45deg);">Mi calma</div>
-    <div class="word" style="transform: translate(-160px, -140px) rotate(-20deg);">Mi flor</div>
-    <div class="word" style="transform: translate(220px, 40px) rotate(10deg);">Eres todo</div>
-    <div class="word" style="transform: translate(-100px, 200px) rotate(60deg);">Mi cielo</div>
-    <div class="word" style="transform: translate(80px, -180px) rotate(-50deg);">Amor eterno</div>
-    <div class="word" style="transform: translate(0, -220px) rotate(0deg);" class="special">Mi estrella</div>
-    <div class="word" style="transform: translate(-240px, 0) rotate(90deg);">Pasión</div>
-    <div class="word" style="transform: translate(0, 220px) rotate(180deg);">Mi destino</div>
-    <div class="word" style="transform: translate(160px, -80px) rotate(25deg);">Dulzura</div>
-    <div class="word" style="transform: translate(-80px, -160px) rotate(-40deg);">Esperanza</div>
-    <div class="word" style="transform: translate(200px, 120px) rotate(35deg);">Mi luz</div>
-    <div class="word" style="transform: translate(-140px, 140px) rotate(-15deg);">Siempre juntos</div>
-    <div class="word" style="transform: translate(100px, 180px) rotate(50deg);">Amanecer</div>
-    <div class="word" style="transform: translate(-180px, -100px) rotate(-25deg);">Mi razón</div>
-    <div class="word" style="transform: translate(240px, -60px) rotate(5deg);">Magia</div>
-    <div class="word" style="transform: translate(-220px, 60px) rotate(70deg);">Abrazos</div>
-    <!-- Agrega más palabras aquí... ¡cuantas quieras! -->
-
+    <div class="words">
+      <div class="word word-1">Te amo</div>
+      <div class="word word-2 glow">Mi universo</div>
+      <div class="word word-3">Mi calma</div>
+      <div class="word word-4">Mi flor</div>
+      <div class="word word-5">Eres todo</div>
+      <div class="word word-6">Mi cielo</div>
+      <div class="word word-7">Amor eterno</div>
+      <div class="word word-8 glow">Mi estrella</div>
+      <div class="word">Pasión</div>
+      <div class="word">Mi destino</div>
+      <div class="word">Dulzura</div>
+      <div class="word">Esperanza</div>
+      <div class="word">Mi luz</div>
+      <div class="word">Siempre juntos</div>
+      <div class="word">Amanecer</div>
+      <div class="word">Mi razón</div>
+      <!-- ¡Agrega cuantas quieras! Copia y pega líneas .word con clase word-X y ajusta el radio/ángulo -->
+    </div>
   </div>
 
   <script>
-    // Generar estrellas de fondo
-    const starsContainer = document.querySelector('.stars');
-    for (let i = 0; i < 200; i++) {
-      const star = document.createElement('div');
-      star.className = 'star';
-      const size = Math.random() * 3 + 1;
-      star.style.width = star.style.height = size + 'px';
-      star.style.left = Math.random() * 100 + 'vw';
-      star.style.top = Math.random() * 100 + 'vh';
-      star.style.animationDelay = Math.random() * 3 + 's';
-      starsContainer.appendChild(star);
+    // Más estrellas twinkling
+    const stars = document.querySelector('.stars');
+    for (let i = 0; i < 300; i++) {
+      const s = document.createElement('div');
+      s.className = 'star';
+      const size = Math.random() * 3 + 0.5;
+      s.style.width = s.style.height = size + 'px';
+      s.style.left = Math.random() * 100 + '%';
+      s.style.top = Math.random() * 100 + '%';
+      s.style.animationDelay = Math.random() * 5 + 's';
+      stars.appendChild(s);
     }
   </script>
 
